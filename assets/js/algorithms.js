@@ -1,3 +1,20 @@
+
+// algorithms 3 - exercise 3
+
+
+// algorithms 3 - exercise 3
+
+function alg3_ex3(color) {
+    i = [];
+    for (let i = 0; i < 10; i++) {
+        const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+        color = randomColor.toUpperCase();
+        console.log("%cHello, World!", "color: "+ color);
+    }
+}
+
+// algorithms 3 - exercise 9
+
 function alg3_ex9(whatFor, str) {
     function caesarsCipherEnc(str) {
         str = str.toUpperCase();
@@ -36,4 +53,8 @@ function alg3_ex9(whatFor, str) {
     }
 }
 
-alg3_ex9();
+// calls
+
+// alg2_ex8();
+alg3_ex3();
+// alg3_ex9();
