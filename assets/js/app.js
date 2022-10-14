@@ -29,3 +29,27 @@ function ejercicio1_3() {
 
 ejercicio1_3();
 
+/* 
+Ejercicio 4_3.
+Escribe un programa que almacena un DNI dado por el usuario, y verifica si es un DNI válido,
+lanzando una alerta “Valid DNI” o “The data entered is wrong”.
+*/
+
+function ejercicio1_3() {
+
+  let usuarioDni = prompt('Inserte DNI');
+  let dni = usuarioDni.toUpperCase();
+  let numero;
+  let letra;
+  let control = ['T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E','T'];
+
+  if (dni.length === 9) {
+    numero = dni.substring(0,8);
+    letra = dni.substring(9);
+
+    
+  }
+
+
+  
+}
