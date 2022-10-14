@@ -24,4 +24,33 @@ function exercise4_2() {
   );
 }
 
-ejercicio4_2();
+exercise4_2();
+
+function exercise2_3() {
+  let userName = prompt("Please enter your name:");
+  const date = new Date();
+
+  let hour = date.getHours();
+  console.log(typeof hour);
+  let minutes = date.getMinutes();
+  let greeting = {
+    morning: "Good Morning, " + userName + "!",
+    afternoon: "Good Afternoon, " + userName + "!",
+    evening: "Good Evening, " + userName + "!",
+  };
+
+  switch (true) {
+    case hour >= 5 && hour <= 11 && minutes >= 0 && minutes <= 59:
+      alert(greeting.morning);
+      break;
+    case hour > 11 && hour <= 17 && minutes >= 0 && minutes <= 59:
+      alert(greeting.afternoon);
+      break;
+
+    default:
+      alert(greeting.evening);
+      break;
+  }
+}
+
+exercise2_3();
