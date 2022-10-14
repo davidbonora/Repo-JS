@@ -54,3 +54,39 @@ function exercise2_3() {
 }
 
 exercise2_3();
+
+function exercise8_3() {
+  let cardSuits = ["clubs", "hearts", "spades", "diamonds"];
+  let cardNumbers = [
+    "ACE",
+    "KING",
+    "QUEEN",
+    "JACK",
+    "10",
+    "9",
+    "8",
+    "7",
+    "6",
+    "5",
+    "4",
+    "3",
+    "2",
+  ];
+  let initialBalance = 500;
+  let bank;
+let player;
+  do {
+    let bet = prompt("Please enter your bet:");
+    if (bet > 0 && bet <= bet) {
+player = 
+
+
+
+
+    } else {
+      alert("Sorry, wrong bet!");
+    }
+  } while (initialBalance >= 0);
+}
+
+exercise8_3();
