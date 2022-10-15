@@ -1,10 +1,15 @@
 ///////// Algorithms 2 - Ej 1 ////////////
 
+function ejercicio1_2(){
+
 let palindrome = "palindrome"
 let split = palindrome.split("")
 console.log(split);
-
+}
+//ejercicio1_2();
 ///////// Algorithms 2 - Ej 7 ////////////  
+
+function ejercicio7_2(){
 
 let min = 0
 let max = 10
@@ -24,4 +29,5 @@ while (answer != number && tries < 3) {
     alert("Sorry, Good luck in love");
   }
 }
-
+}
+//ejercicio7_2();
