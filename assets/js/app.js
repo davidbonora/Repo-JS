@@ -11,7 +11,6 @@ let max = 10
 let number = Math.floor(Math.random()* (max - min +1)) + min;
 let tries = 1
 let answer = prompt("Please, guest the number")
-//console.log(number)
 
 while (answer != number && tries < 3) {
   tries++;
