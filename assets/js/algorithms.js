@@ -29,16 +29,26 @@ function ejercicio6_3() {
     "¿Y de qué te sirve poseer las estrellas?",
   ];
   console.log(quotes.length);
-let counter = 10;
-let timer = setInterval(() => {
-  console.log(counter);
-  counter--;
-  if (counter == 0) {
-    clearInterval(timer);
+  let min = 0;
+  let max = quotes.length - 1;
+
+  function randomquote() {
+    for (let i = 0; i < 1; i++) {
+      let random = Math.floor(Math.random() * (max - min + 1)) + min;
+      console.log(quotes[random]);
+    }
   }
-}, 1000);}
+  let temp = null;
+  function interval() {
+    temp = setInterval(randomquote, 1000);
+  }
+  interval();
 
-
+  function stop() {
+    clearInterval(temp, 3000);
+  }
+  stop();
+}
 ejercicio6_3();
 
 function ejercicio7_3() {
