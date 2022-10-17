@@ -3,7 +3,7 @@ function ejercicio3_2() {
   console.log(`${quad[0]} \n${quad[1]}\n${quad[2]} \n${quad[3]}`);
 }
 
-// ejercicio3_2();
+ejercicio3_2();
 
 function ejercicio6_3() {
   let quotes = [
@@ -32,22 +32,14 @@ function ejercicio6_3() {
   let min = 0;
   let max = quotes.length - 1;
 
-  function randomquote() {
-    for (let i = 0; i < 1; i++) {
-      let random = Math.floor(Math.random() * (max - min + 1)) + min;
-      console.log(quotes[random]);
-    }
+  function randomQuote() {
+    let random = Math.floor(Math.random() * (max - min + 1)) + min;
+    console.log(quotes[random]);
   }
-  let temp = null;
-  function interval() {
-    temp = setInterval(randomquote, 1000);
-  }
-  interval();
-
-  function stop() {
-    clearInterval(temp, 3000);
-  }
-  stop();
+  let temp = setInterval(randomQuote, 10000);
+  setTimeout(() => {
+    clearInterval(temp);
+  }, 120000);
 }
 ejercicio6_3();
 
@@ -72,4 +64,4 @@ function ejercicio7_3() {
   console.log(`Los números pares son: ${pares}`);
 }
 
-// ejercicio7_3();
+ejercicio7_3();
