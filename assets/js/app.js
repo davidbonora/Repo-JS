@@ -56,37 +56,140 @@ function exercise2_3() {
 exercise2_3();
 
 function exercise8_3() {
-  let cardSuits = ["clubs", "hearts", "spades", "diamonds"];
-  let cardNumbers = [
-    "ACE",
-    "KING",
-    "QUEEN",
-    "JACK",
-    "10",
-    "9",
-    "8",
-    "7",
-    "6",
-    "5",
-    "4",
-    "3",
+  const CARDSUITS = ["♣", "♥", "♠", "◆"];
+  const CARDNUMBERS = [
     "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "JACK",
+    "QUEEN",
+    "KING",
+    "ACE",
   ];
-  let initialBalance = 500;
-  let bank;
-let player;
-  do {
-    let bet = prompt("Please enter your bet:");
-    if (bet > 0 && bet <= bet) {
-player = 
-
-
-
-
-    } else {
-      alert("Sorry, wrong bet!");
+  //Crea la clase para crear cada carta y así asignarle un valor para poder compararlas.
+  class Card {
+    constructor(name, suit, value) {
+      this._name = name;
+      this._suit = suit;
+      this._value = value;
     }
-  } while (initialBalance >= 0);
+    set name(value) {
+      this._name = value;
+    }
+    set suit(value) {
+      this._suit = value;
+    }
+    set value(value) {
+      this._value = value;
+    }
+    get name() {
+      return this._name;
+    }
+    get suit() {
+      return this._suit;
+    }
+    get value() {
+      return this._value;
+    }
+  }
+  let answer = false;
+  let newGame;
+
+  //Crea una baraja completa dentro de un array.
+  const CARDS = [];
+  for (let i = 0; i < CARDSUITS.length; i++) {
+    const SUIT = CARDSUITS[i];
+    for (let j = 0; j < CARDNUMBERS.length; j++) {
+      const NUMBER = CARDNUMBERS[j];
+      CARDS.push(new Card(NUMBER, SUIT, j + 1));
+    }
+    console.log(CARDS);
+  }
+
+  let initialBalance = 500;
+  let balance = initialBalance;
+//El juego.
+  do {
+    let bet = prompt(
+      `Your balance is: ${balance}\nPlease enter your bet or 0 to leave de game:`
+    );
+    bet = parseInt(bet);
+    let card1 = CARDS[Math.floor(Math.random() * CARDS.length)];
+    let card2 = CARDS[Math.floor(Math.random() * CARDS.length)];
+
+    if (bet > 0 && bet <= initialBalance) {
+      if (card1.value > card2.value) {
+        balance += bet;
+        alert(
+          `Player: ${card1.name}${card1.suit}\nBank :${card2.name}${card2.suit}\nYou win!\nYour balance is: ${balance}`
+        );
+
+        newGame = prompt(
+          `Do you want play a new game?\nEnter "y" to continue.\nEnter another one to exit`
+        );
+        if (newGame == "y") {
+          answer = true;
+        } else {
+          alert(
+            `Thank you for playing the game.\nBetting benefits: ${
+              balance - initialBalance
+            }\nTotal balance: ${balance}`
+          );
+          break;
+        }
+      } else if (card1.value < card2.value) {
+        balance -= bet;
+        alert(
+          `Player: ${card1.name}${card1.suit}\nBank :${card2.name}${card2.suit}\nYou lose!\nYour balance is: ${balance}`
+        );
+        newGame = prompt(
+          `Do you want play a new game?\nEnter "y" to continue.\nEnter another one to exit`
+        );
+        if (newGame == "y") {
+          answer = true;
+        } else {
+          alert(
+            `Thank you for playing the game.\nBetting benefits: ${
+              balance - initialBalance
+            }\nTotal balance: ${balance}`
+          );
+          break;
+        }
+      } else {
+        alert(
+          `Player: ${card1.name}${card1.suit}\nBank :${card2.name}${card2.suit}\nDraw!\nYour balance is: ${balance}`
+        );
+        newGame = prompt(
+          `Do you want play a new game?\nEnter "y" to continue.\nEnter another one to exit`
+        );
+        if (newGame == "y") {
+          answer = true;
+        } else {
+          alert(
+            `Thank you for playing the game.\nBetting benefits: ${
+              balance - initialBalance
+            }\nTotal balance: ${balance}`
+          );
+          break;
+        }
+      }
+    } else if (bet > initialBalance || isNaN(bet)) {
+      alert(`Please enter a valid bet.`);
+    } else {
+      alert(
+        `Thank you for playing the game.\nBetting benefits: ${
+          balance - initialBalance
+        }\nTotal balance: ${balance}`
+      );
+      break;
+    }
+  } while (initialBalance > 0 || !answer);
 }
 
 exercise8_3();
