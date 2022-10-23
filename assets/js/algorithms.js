@@ -114,7 +114,7 @@ function exercise8_3() {
 
   let initialBalance = 500;
   let balance = initialBalance;
-//El juego.
+  //El juego.
   do {
     let bet = prompt(
       `Your balance is: ${balance}\nPlease enter your bet or 0 to leave de game:`
@@ -123,7 +123,7 @@ function exercise8_3() {
     let card1 = CARDS[Math.floor(Math.random() * CARDS.length)];
     let card2 = CARDS[Math.floor(Math.random() * CARDS.length)];
 
-    if (bet > 0 && bet <= initialBalance) {
+    if ((bet > 0 && bet <= initialBalance) || (bet > 0 && bet <= balance)) {
       if (card1.value > card2.value) {
         balance += bet;
         alert(
@@ -135,7 +135,8 @@ function exercise8_3() {
         );
         if (newGame == "y") {
           answer = true;
-        } else {
+        } 
+        else {
           alert(
             `Thank you for playing the game.\nBetting benefits: ${
               balance - initialBalance
@@ -179,7 +180,7 @@ function exercise8_3() {
           break;
         }
       }
-    } else if (bet > initialBalance || isNaN(bet)) {
+    } else if (bet > balance || isNaN(bet)) {
       alert(`Please enter a valid bet.`);
     } else {
       alert(
@@ -189,7 +190,7 @@ function exercise8_3() {
       );
       break;
     }
-  } while (initialBalance > 0 || !answer);
+  } while (initialBalance > 0 || balance > 0 || !answer);
 }
 
 exercise8_3();
