@@ -3,9 +3,9 @@
 
 function ejercicio2_2() {
   let text = "no lemon, no melon";
-  let letters = [...text.replace];
+  let letters = [...text];
   let palindrome = letters.reverse();
-  console.log(palindrome);
+  console.log(palindrome.join(""));
 }
 
 //ejercicio2_2();
