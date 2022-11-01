@@ -9,31 +9,22 @@ function alg2_ex8() {
     }
 
     let mayus = prompt("Do you want to include mayus? (y/n)");
-    while (mayus != "y" && mayus != "n") {
-        console.error("Incorrect answer, please input a valid one");
-        prompt("Try again:");
-        break;
-    }
-
     let minus = prompt("Do you want to include minus? (y/n)");
-    while (minus != "y" && minus != "n") {
-        console.error("Incorrect answer, please input a valid one");
-        prompt("Try again:");
-        break;
-    }
-
     let nums = prompt("Do you want to include numbers? (y/n)");
-    while (nums != "y" && nums != "n") {
-        console.error("Incorrect answer, please input a valid one");
-        prompt("Try again:");
-        break;
-    }
-
     let symb = prompt("Do you want to include symbols? (y/n)");
-    while (symb != "y" && symb != "n") {
+
+    if (
+        mayus != "y" &&
+        minus != "y" &&
+        nums != "y" &&
+        symb != "y" &&
+        mayus != "n" &&
+        minus != "n" &&
+        nums != "n" &&
+        symb != "n"
+    ) {
         console.error("Incorrect answer, please input a valid one");
         prompt("Try again:");
-        break;
     }
 
     let arrayFromLowToHigh = (low, high) => {
@@ -53,26 +44,48 @@ function alg2_ex8() {
         .concat(arrayFromLowToHigh(123, 126));
 
     const generatePassword = (minmax, mayus, nums, symb) => {
-        let charCodes = LOWERCASE_CODES;
-        if ((mayus != "n")) charCodes = charCodes.concat(UPPERCASE_CODES);
-        if ((symb != "n")) charCodes = charCodes.concat(SYMBOL_CODES);
-        if ((nums != "n")) charCodes = charCodes.concat(NUMBER_CODES);
+        let charCodes = [];
+        if (mayus != "n") {
+            charCodes = charCodes.concat(UPPERCASE_CODES);
+        }
+        if (minus != "n") {
+            charCodes = charCodes.concat(LOWERCASE_CODES);
+        }
+        if (symb != "n") {
+            charCodes = charCodes.concat(SYMBOL_CODES);
+        }
+        if (nums != "n") {
+            charCodes = charCodes.concat(NUMBER_CODES);
+        }
+
+        charCodes.sort(function (a, b) {
+            return b - a;
+        });
+
+        let minChar = charCodes[charCodes.length - 1];
+        let maxChar = charCodes[0];
+
+        function randomize(min, max) {
+            let randomNumber =  Math.floor(Math.random() * (max - min + 1) + min);
+            if (randomNumber >= min && randomNumber <= max) {
+                return randomNumber;
+            }
+        }
+
         const passwordCharacters = [];
         for (let i = 0; i < minmax; i++) {
-            const characterCode =
-                charCodes[
-                    Math.floor(
-                        Math.random() *
-                            (charCodes.length
-                    )
-                )
-                ];
-            passwordCharacters.push(String.fromCharCode(characterCode));
+            let randomASCII = randomize(minChar, maxChar);
+            if (charCodes.includes(randomASCII)) {
+                passwordCharacters.push(String.fromCharCode(randomASCII));
+            } else {
+                i = i - 1;
+                console.log("Getting a different number");
+            }
         }
         return passwordCharacters.join("");
     };
 
-    alert(generatePassword(minmax, mayus, nums, symb))
+    alert(generatePassword(minmax, mayus, nums, symb));
 }
 
 // algorithms 3 - exercise 3
